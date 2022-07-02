@@ -7,19 +7,11 @@ public class SmartFactory : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void load( string id);
 
-    private string id;
+    private string eventKey;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        System.Random random = new System.Random();
-        double dobleValue = random.NextDouble();
-        string strihgValue = dobleValue.ToString();
-        string id = strihgValue.Replace( ".", "" );
-        this.id = id;
-        
-        load( this.id );
 
     }
 
@@ -28,4 +20,14 @@ public class SmartFactory : MonoBehaviour
     {
         
     }
+
+    public string setEventKey( string eventKey ){
+
+        this.eventKey = eventKey;
+
+        Response response = new Response( this.eventKey, Response.ResultCode.Success, null );
+        return response.toJsonString();
+
+    }
+
 }

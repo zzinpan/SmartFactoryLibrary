@@ -1,11 +1,9 @@
 mergeInto(LibraryManager.library, {
 
-    load: function( id ){
+    completeSetEventKey: function( responseJson ){
         
-        window.dispatchEvent(new CustomEvent('loadSmartFactory', {
-            detail: {
-                id: id
-            }
+        window.dispatchEvent(new CustomEvent('completeSetEventKey', {
+            detail: JSON.parse( responseJson )
         }));
 
     }

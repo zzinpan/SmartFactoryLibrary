@@ -5,7 +5,7 @@ public class SmartFactory : MonoBehaviour
 {
 
     [DllImport("__Internal")]
-    private static extern void load( string id);
+    private static extern void completeSetEventKey( string responseJson );
 
     private string eventKey;
 
@@ -21,12 +21,12 @@ public class SmartFactory : MonoBehaviour
         
     }
 
-    public string setEventKey( string eventKey ){
+    public void setEventKey( string eventKey ){
 
         this.eventKey = eventKey;
 
         Response response = new Response( this.eventKey, Response.ResultCode.Success, null );
-        return response.toJsonString();
+        SmartFactory.completeSetEventKey( response.toJsonString() );
 
     }
 
